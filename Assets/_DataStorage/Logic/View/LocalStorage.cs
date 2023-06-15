@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
+using _DataStorage.Logic.Core;
 using UnityEngine;
 
-namespace _DataStorage.Logic
+namespace _DataStorage.Logic.View
 {
     public class LocalStorage : MonoBehaviour, IStorage
     {

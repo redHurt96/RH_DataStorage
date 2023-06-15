@@ -1,5 +1,7 @@
 using System.Collections;
 using _DataStorage.Logic;
+using _DataStorage.Logic.Core;
+using _DataStorage.Logic.View;
 using UnityEngine;
 using UnityEngine.UI;
 

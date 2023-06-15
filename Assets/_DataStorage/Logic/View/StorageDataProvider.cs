@@ -1,6 +1,7 @@
+using _DataStorage.Logic.Core;
 using UnityEngine;
 
-namespace _DataStorage.Logic
+namespace _DataStorage.Logic.View
 {
     [RequireComponent(typeof(LocalStorage))]
     public abstract class StorageDataProvider : MonoBehaviour

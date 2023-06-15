@@ -1,4 +1,4 @@
-namespace _DataStorage.Logic
+namespace _DataStorage.Logic.Core
 {
     public interface IStorage
     {

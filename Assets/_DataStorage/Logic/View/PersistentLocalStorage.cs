@@ -3,23 +3,16 @@ using System.Collections.Generic;
 using System.Text;
 using RH_Utilities.Attributes;
 using UnityEngine;
-using static System.Convert;
 using static UnityEngine.JsonUtility;
 using static UnityEngine.PlayerPrefs;
 
-namespace _DataStorage.Logic
+namespace _DataStorage.Logic.View
 {
     public class PersistentLocalStorage : LocalStorage
     {
-        private static readonly Dictionary<Type, Func<object, object>> _primitiveParsers = new()
-        {
-            [typeof(bool)] = raw => ToBoolean(raw),
-            [typeof(int)] = raw => ToInt32(raw),
-            [typeof(float)] = raw => ToSingle(raw),
-            [typeof(string)] = Convert.ToString,
-        };
-
         [SerializeField, ReadOnly] private string _id;
+
+        private PrimitivesParser _parser;
 
         private void Awake()
         {
@@ -45,8 +38,8 @@ namespace _DataStorage.Logic
                 
                 string[] pair = rawPair.Split(';');
                 Type type = Type.GetType(pair[0]);
-                object value = _primitiveParsers.ContainsKey(type) 
-                    ? _primitiveParsers[type](pair[1]) 
+                object value = _parser.ContainsType(type) 
+                    ? _parser.Execute(type, pair[1]) 
                     : FromJson(pair[1], type);
                 
                 Create(value);
@@ -58,7 +51,7 @@ namespace _DataStorage.Logic
             StringBuilder builder = new();
 
             foreach (KeyValuePair<Type,object> pair in GetValues())
-                builder.Append(_primitiveParsers.ContainsKey(pair.Key)
+                builder.Append(_parser.ContainsType(pair.Key)
                     ? $"{pair.Key};{pair.Value};;"
                     : $"{pair.Key};{ToJson(pair.Value)};;");
 

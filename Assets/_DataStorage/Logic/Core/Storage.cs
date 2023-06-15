@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace _DataStorage.Logic
+namespace _DataStorage.Logic.Core
 {
     public class Storage : IStorage
     {

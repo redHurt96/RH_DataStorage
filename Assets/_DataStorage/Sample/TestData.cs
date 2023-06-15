@@ -1,6 +1,6 @@
 using System;
 
-namespace _DataStorage.Logic
+namespace _DataStorage.Sample
 {
     [Serializable]
     public class TestData
