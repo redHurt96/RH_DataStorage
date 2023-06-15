@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace _DataStorage.Sample
 {
-    [RequireComponent(typeof(PersistentLocalStorage))]
+    [RequireComponent(typeof(LocalStorage))]
     public class TestStorageUIView : MonoBehaviour
     {
         [SerializeField] private Text _intField;

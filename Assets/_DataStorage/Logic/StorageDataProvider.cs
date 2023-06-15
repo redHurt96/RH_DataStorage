@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace _DataStorage.Logic
 {
-    [RequireComponent(typeof(PersistentLocalStorage))]
+    [RequireComponent(typeof(LocalStorage))]
     public abstract class StorageDataProvider : MonoBehaviour
     {
         private void Start()
