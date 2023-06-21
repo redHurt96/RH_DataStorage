@@ -10,9 +10,11 @@ namespace _DataStorage.Logic.View
 {
     public class PersistentLocalStorage : LocalStorage
     {
+        public string Id => _id;
+        
         [SerializeField, ReadOnly] private string _id;
 
-        private PrimitivesParser _parser;
+        private readonly PrimitivesParser _parser = new();
 
         private void Awake()
         {
@@ -61,7 +63,7 @@ namespace _DataStorage.Logic.View
 
 #if UNITY_EDITOR
         [ContextMenu(nameof(GenerateId))]
-        private void GenerateId() => 
+        public void GenerateId() => 
             _id = Guid.NewGuid().ToString();
 #endif
     }
